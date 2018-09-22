@@ -14,10 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('saludo/{nombre}',function ($nombre){
-	return "Hola ".$nombre;
-});
-Route::get('ejemplo','EjemploController@ejemplo');
-Route::get('libro/nuevo',function(){
-	return view('libros.nuevoLibro');
+Route::prefix('admin')->group(function () {
+    Route::resource('carreras','CarrerasController');
 });
