@@ -39,13 +39,19 @@ class CarrerasController extends Controller
     public function store(Request $request)
     {
         //
+        $path = $request->file('logo')->store('logos');
+
         Carrera::create([
             'numero'=>$request['id'],
             'nombre'=>$request['nombre'],
-            'logo'=>'logo.jpg'
+            'logo'=>$path
         ]);
-        
-        return $request;
+
+
+
+        $carreras=Carrera::all();
+
+        return view('carreras.carreras',['carreras'=>$carreras]);
     }
 
     /**
@@ -67,7 +73,10 @@ class CarrerasController extends Controller
      */
     public function edit($id)
     {
-        //
+        //''
+        $carrera=Carrera::find($id);
+
+        return view('carreras.editarCarrera',['carrera'=>$carrera]);
     }
 
     /**
@@ -91,5 +100,10 @@ class CarrerasController extends Controller
     public function destroy($id)
     {
         //
+        Carrera::destroy($id);
+        
+        $carreras=Carrera::all();
+
+        return view('carreras.carreras',['carreras'=>$carreras]);
     }
 }
