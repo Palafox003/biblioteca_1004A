@@ -6,11 +6,11 @@
 	<div class="row">
 		<dir class="col">
 			<h2>Agregar Libro</h2>
-			<form method="post" enctype="multipart/form-data" action="/admin/carreras">
+			<form method="post" enctype="multipart/form-data" action="/admin/libros">
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
 			  <div class="form-group">
-			    <label for="titulo">Título del Libro:</label>
-			    <input type="text" class="form-control" name="titulo" id="titulo">
+			    <label for="nombre">Título del Libro:</label>
+			    <input type="text" class="form-control" name="nombre" id="nombre">
 			  </div>
 			  <div class="form-group">
 			    <label for="autor">Nombre del Autor:</label>
@@ -29,15 +29,17 @@
 			    <input type="text" class="form-control" name="edicion" id="edicion">
 			  </div>
 			  <div class="form-group">
-			    <label for="carrera">Carrera:</label>
-			    <select name="carrera" class="form-control">
+			    <label for="carrera_id">Carrera:</label>
+			    <select name="carrera_id" class="form-control">
 			    	<option value="0">Selecciona una carrera</option>
-			    	<option value="1">TSU EN TI</option>
+		@foreach($carreras as $carrera)
+					<option value="{{$carrera->id}}">{{$carrera->nombre}}</option>
+		@endforeach			    	
 			    </select>
 			  </div>
 
 			  <input class="btn btn-primary btn-block" type="submit" name="boton" value="Guardar">			  
 			</form>
-		</dir>
+		</div>
 	</div>
 @endsection

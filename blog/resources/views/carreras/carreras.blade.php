@@ -19,7 +19,7 @@
 					<td>{{$carrera->numero}}</td>		
 					<td>{{$carrera->nombre}}</td>
 					<td><img  class="logo-carrera img-fluid" src="{{asset('/img/'.$carrera->logo)}}"></td>
-					<td><a class="btn btn-primary" href="/admin/carreras/{{$carrera->id/edit}}">Editar</a></td>
+					<td><a class="btn btn-primary" href="/admin/carreras/{{$carrera->id}}/edit">Editar</a></td>
 					<td>
 						<form method="post" action="/admin/carreras/{{$carrera->id}}">
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
